@@ -24,9 +24,9 @@ def get_api():
     return api
 
 def application(env,start_response):
+    start_response('200 OK',[('Content-Type','text/html')])
     api=get_api()
-    news=getnews();
+    news=getnews()
     for line in news:
     	api.update_status(status=line.text)
-    start_response('200 OK',[('Content-Type','text/html')])
     return["Hello tweets are posted!"]
